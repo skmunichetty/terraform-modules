@@ -22,20 +22,6 @@ module "acm_certificate" {
 
 Omit `certificate_chain_ssm_parameter_name` when the issuing CA did not provide a chain.
 
-A runnable root-module example is available in [examples/basic](./examples/basic). Copy `terraform.tfvars.example` to `terraform.tfvars`, replace the sample values, and run `terraform init` followed by `terraform plan`.
-
-## Tests
-
-The native Terraform tests use a mocked AWS provider, so they do not read real SSM parameters or create an ACM certificate.
-
-```shell
-cd acm
-terraform init
-terraform test
-```
-
-Terraform 1.7 or newer is required to run the mocked-provider tests.
-
 ## Required AWS permissions
 
 The calling Terraform role needs permission to read the selected SSM parameters, decrypt them when a customer-managed KMS key is used, and manage imported ACM certificates.
